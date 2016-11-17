@@ -1,0 +1,17 @@
+0Model Accuracy: 65.24%Model Accuracy: 64.96%
+10Model Accuracy: 65.24%Model Accuracy: 64.96%
+20Model Accuracy: 65.24%Model Accuracy: 64.96%
+30Model Accuracy: 66.20%Model Accuracy: 64.28%
+40Model Accuracy: 65.00%Model Accuracy: 62.40%
+50Model Accuracy: 64.20%Model Accuracy: 60.52%
+60Model Accuracy: 64.52%Model Accuracy: 61.36%
+70Model Accuracy: 65.24%Model Accuracy: 65.08%
+80Model Accuracy: 64.76%Model Accuracy: 60.96%
+90Model Accuracy: 65.24%Model Accuracy: 64.96%
+100Model Accuracy: 63.92%Model Accuracy: 60.20%
+110Model Accuracy: 65.24%Model Accuracy: 64.96%
+120Model Accuracy: 66.48%Model Accuracy: 62.00%
+130Model Accuracy: 65.24%Model Accuracy: 64.96%
+140Model Accuracy: 65.24%Model Accuracy: 64.96%
+150Model Accuracy: 65.24%Model Accuracy: 64.96%
+160Model Accuracy: 65.24%Model Accuracy: 64.96%
