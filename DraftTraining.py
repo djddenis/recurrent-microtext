@@ -24,7 +24,8 @@ LABELS = {
 
 good_labels = [LABELS['Good'], LABELS['Discussion'], LABELS['Endorsed Automated']]
 
-class Message:     
+
+class Message:
     def __init__(self, raw_string):
         parts = raw_string.split(':')
 
@@ -41,11 +42,11 @@ class Message:
         self.username = parts[2].split('!')[0].strip(':! ')
         self.message = reduce(add, parts[3:]).strip('\n')
         self.label = LABELS['Unknown']
-        
 
-        
+
 def make_ascii(msg):
     msg.message = msg.message.encode('ascii', 'ignore')
+
 
 def ignore_caps(msg):
     msg.message = msg.message.lower()
@@ -56,6 +57,7 @@ with open(os.getcwd() + '/messages.pkl', 'rb') as f:
 fake_messages = []
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'y', 'x', 'z']    
 repetitive_phrases = {'kappa': 0, 'pogchamp': 0, 'ghost': 0, 'git': 0, 'lul': 0, 'wutface': 0, 'damn son': 0}
+
 
 def make_fake_messages(num):
     global fake_messages
@@ -93,10 +95,11 @@ nodes3 = 32
 
 make_fake_messages(train_messages + test_messages)
 
+
 def make_message_class(text, good):
-	msg = Message(":0:abc:{0}".format(text))
-	msg.label = LABELS['Discussion'] if good else LABELS['Repetitive']
-	return msg
+    msg = Message(":0:abc:{0}".format(text))
+    msg.label = LABELS['Discussion'] if good else LABELS['Repetitive']
+    return msg
 
 ArtificialDatasetFactory.NUM_MESSAGES = train_messages + test_messages
 ads_factory = ArtificialDatasetFactory()
@@ -111,12 +114,10 @@ for msg in classified_messages:
     
 reduced_messages = [msg for msg in classified_messages if msg.label in [LABELS['Repetitive'], LABELS['Discussion']]]
 
-#import pdb; pdb.set_trace()
-
 X = [([ord(c) for c in msg.message] + [-1.]) for msg in classified_messages]
 X = pad_sequences(X, maxlen=max_seq_len, dtype='float32')
 X = np.reshape(X, (X.shape[0], max_seq_len, 1)) 
-X = X / np.linalg.norm(X)
+X /= np.linalg.norm(X)
 y = np.array([(int(msg.label != LABELS['Repetitive'])) for msg in classified_messages])
 
 X_tr = X[:train_messages]
@@ -135,7 +136,7 @@ def train():
     model.add(Dropout(0.2))
     model.add(Dense(1, activation='sigmoid'))
 
-	# usually lr=0.0001
+    # usually lr=0.0001
     model.compile(loss='binary_crossentropy', optimizer=Adam(lr=0.0001), metrics=['accuracy'])
 
     for i in xrange(epochs):
@@ -143,14 +144,14 @@ def train():
         model.reset_states()
         print 'EPOCH {0}'.format(i)
         if i % 10 == 0:
-			score_string_tr = evaluate(model, X_tr, y_tr)
-			score_string_te = evaluate(model, X_te, y_te)
-			with open(os.getcwd() + '/scores.txt'.format(i), 'a') as f:
-				f.write(str(i))
-				f.write(score_string_tr)
-				f.write(score_string_te)
-				f.write('\n')
-			model.save('interim')
+            score_string_tr = evaluate(model, X_tr, y_tr)
+            score_string_te = evaluate(model, X_te, y_te)
+            with open(os.getcwd() + '/scores.txt'.format(i), 'a') as f:
+                f.write(str(i))
+                f.write(score_string_tr)
+                f.write(score_string_te)
+                f.write('\n')
+            model.save('interim')
         
     evaluate(model, X_tr, y_tr)
     model.reset_states()
@@ -158,30 +159,33 @@ def train():
     model.save('model1')
     return model
 
+
 def load():
     return load_model('model1')
-    
+
+
 def continue_training(model):
     for i in xrange(epochs):
         model.fit(X_tr, y_tr, nb_epoch=1, batch_size=1, verbose=1, shuffle=False)
         model.reset_states()
         print 'EPOCH {0}'.format(i)
         if i % 100 == 0:
-			score_string_tr = evaluate(model, X_tr, y_tr)
-			score_string_te = evaluate(model, X_te, y_te)
-			with open(os.getcwd() + '/scores.txt'.format(i), 'a') as f:
-				f.write(str(i))
-				f.write(score_string_tr)
-				f.write(score_string_te)
-				f.write('\n')
-			model.save('interim')
+            score_string_tr = evaluate(model, X_tr, y_tr)
+            score_string_te = evaluate(model, X_te, y_te)
+            with open(os.getcwd() + '/scores.txt'.format(i), 'a') as f:
+                f.write(str(i))
+                f.write(score_string_tr)
+                f.write(score_string_te)
+                f.write('\n')
+            model.save('interim')
         
     evaluate(model, X_tr, y_tr)
     model.reset_states()
 
     model.save('model1')
     return model
-    
+
+
 def evaluate(model, X_eval, y_eval):
     model.reset_states()
     scores = model.evaluate(X_eval, y_eval, batch_size=1, verbose=0)
