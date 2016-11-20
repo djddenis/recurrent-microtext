@@ -65,9 +65,6 @@ for msg in messages:
     msg.make_ascii()
     msg.ignore_caps()
 
-for msg in messages[:100]:
-    print msg.message
-
 X = [([ord(c) for c in msg.message] + [-1.]) for msg in messages]
 X = pad_sequences(X, maxlen=max_seq_len, dtype='float32')
 X = np.reshape(X, (X.shape[0], max_seq_len, 1))
@@ -79,40 +76,39 @@ y_tr = y[:train_messages]
 X_te = X[train_messages:train_messages + test_messages]
 y_te = y[train_messages:train_messages + test_messages]
 
-
 def begin_training():
     model = Sequential()
     model.add(GRU(nodes, batch_input_shape=(1, X_tr.shape[1], X_tr.shape[2]), stateful=True, return_sequences=True))
     model.add(Dropout(0.2))
     model.add(GRU(nodes2, return_sequences=True, stateful=True))
-    model.add(Dropout(0.2))
+    model.add(Dropout(0.1))
     model.add(GRU(nodes3, stateful=True))
-    model.add(Dropout(0.2))
+    model.add(Dropout(0.1))
     model.add(Dense(1, activation='sigmoid'))
 
-    usually lr=0.0001
+    # usually lr=0.0001
     model.compile(loss='binary_crossentropy', optimizer=Adam(lr=0.0001), metrics=['accuracy'])
 
     for i in xrange(epochs):
         run_epoch(model, X_tr, y_tr, i, i % 10 == 0, i % 100 == 0)
 
-    evaluate(model, X_tr, y_tr)
+    evaluate(model, X_tr, y_tr, True)
     model.reset_states()
 
     model.save('model')
     return model
 
 
-def run_epoch(model, X, y, i, eval, save):
-    model.fit(X, y, nb_epoch=1, batch_size=1, verbose=1, shuffle=False)
+def run_epoch(model, Xe, ye, i, eval, save):
+    model.fit(Xe, ye, nb_epoch=1, batch_size=1, verbose=1, shuffle=False)
     model.reset_states()
     print 'EPOCH {0}'.format(i)
     if eval:
-        score_string_tr = evaluate(model, X_tr, y_tr)
-        score_string_te = evaluate(model, X_te, y_te)
+        score_string_tr = evaluate(model, X_tr, y_tr, True)
+        score_string_te = evaluate(model, X_te, y_te, False)
         with open(os.getcwd() + '/scores.txt'.format(i), 'a') as f:
-            f.write(str(i))
-            f.write(score_string_tr)
+            f.write(str(i) + " ")
+            f.write(score_string_tr + " ")
             f.write(score_string_te)
             f.write('\n')
     if save:
@@ -127,7 +123,7 @@ def continue_training(model):
     for i in xrange(epochs):
         run_epoch(model, X_tr, y_tr, i, i % 10 == 0, i % 100 == 0)
 
-    evaluate(model, X_tr, y_tr)
+    evaluate(model, X_tr, y_tr, True)
     model.reset_states()
 
     model.save('model')
@@ -140,6 +136,7 @@ def evaluate(model, X_eval, y_eval, training):
     scores = model.evaluate(X_eval, y_eval, batch_size=1, verbose=0)
     model.reset_states()
     predicts = model.predict(X_eval[:100], batch_size=1)
+    model.reset_states()
     for msg, predict in zip(messages[:100], predicts):
         print msg.message
         print predict
