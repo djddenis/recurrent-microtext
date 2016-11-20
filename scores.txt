@@ -1,18 +1,151 @@
-Dropout 0.2 All Layers
-0Model Accuracy: 65.24%Model Accuracy: 64.96%
-10Model Accuracy: 65.24%Model Accuracy: 64.96%
-20Model Accuracy: 65.24%Model Accuracy: 64.96%
-30Model Accuracy: 66.20%Model Accuracy: 64.28%
-40Model Accuracy: 65.00%Model Accuracy: 62.40%
-50Model Accuracy: 64.20%Model Accuracy: 60.52%
-60Model Accuracy: 64.52%Model Accuracy: 61.36%
-70Model Accuracy: 65.24%Model Accuracy: 65.08%
-80Model Accuracy: 64.76%Model Accuracy: 60.96%
-90Model Accuracy: 65.24%Model Accuracy: 64.96%
-100Model Accuracy: 63.92%Model Accuracy: 60.20%
-110Model Accuracy: 65.24%Model Accuracy: 64.96%
-120Model Accuracy: 66.48%Model Accuracy: 62.00%
-130Model Accuracy: 65.24%Model Accuracy: 64.96%
-140Model Accuracy: 65.24%Model Accuracy: 64.96%
-150Model Accuracy: 65.24%Model Accuracy: 64.96%
-160Model Accuracy: 65.24%Model Accuracy: 64.96%
+Artificial Improved Dataset Accuracy
+0 Model Accuracy: 65.12% Model Accuracy: 63.72%
+10 Model Accuracy: 65.12% Model Accuracy: 63.72%
+20 Model Accuracy: 65.12% Model Accuracy: 63.72%
+30 Model Accuracy: 65.12% Model Accuracy: 63.72%
+40 Model Accuracy: 65.12% Model Accuracy: 63.72%
+50 Model Accuracy: 65.12% Model Accuracy: 63.72%
+60 Model Accuracy: 65.12% Model Accuracy: 63.72%
+70 Model Accuracy: 65.36% Model Accuracy: 63.76%
+80 Model Accuracy: 66.08% Model Accuracy: 64.72%
+90 Model Accuracy: 66.48% Model Accuracy: 65.16%
+100 Model Accuracy: 68.32% Model Accuracy: 64.96%
+110 Model Accuracy: 72.40% Model Accuracy: 62.12%
+120 Model Accuracy: 77.08% Model Accuracy: 50.00%
+130 Model Accuracy: 77.84% Model Accuracy: 50.72%
+140 Model Accuracy: 76.32% Model Accuracy: 51.16%
+150 Model Accuracy: 74.16% Model Accuracy: 50.80%
+160 Model Accuracy: 77.96% Model Accuracy: 47.56%
+170 Model Accuracy: 72.88% Model Accuracy: 55.60%
+180 Model Accuracy: 78.32% Model Accuracy: 56.12%
+190 Model Accuracy: 81.52% Model Accuracy: 51.68%
+200 Model Accuracy: 77.20% Model Accuracy: 55.60%
+210 Model Accuracy: 72.80% Model Accuracy: 54.96%
+220 Model Accuracy: 80.72% Model Accuracy: 53.56%
+230 Model Accuracy: 73.88% Model Accuracy: 53.48%
+240 Model Accuracy: 75.56% Model Accuracy: 56.48%
+250 Model Accuracy: 80.04% Model Accuracy: 54.96%
+260 Model Accuracy: 80.84% Model Accuracy: 56.08%
+270 Model Accuracy: 82.00% Model Accuracy: 56.08%
+280 Model Accuracy: 81.88% Model Accuracy: 56.32%
+290 Model Accuracy: 81.96% Model Accuracy: 56.20%
+300 Model Accuracy: 84.40% Model Accuracy: 56.00%
+310 Model Accuracy: 82.08% Model Accuracy: 56.48%
+320 Model Accuracy: 82.92% Model Accuracy: 53.92%
+330 Model Accuracy: 83.84% Model Accuracy: 54.52%
+340 Model Accuracy: 83.00% Model Accuracy: 54.08%
+350 Model Accuracy: 82.40% Model Accuracy: 57.56%
+360 Model Accuracy: 81.00% Model Accuracy: 54.00%
+370 Model Accuracy: 82.96% Model Accuracy: 54.52%
+380 Model Accuracy: 83.24% Model Accuracy: 54.84%
+390 Model Accuracy: 83.04% Model Accuracy: 55.28%
+400 Model Accuracy: 83.88% Model Accuracy: 54.92%
+410 Model Accuracy: 83.96% Model Accuracy: 54.36%
+420 Model Accuracy: 82.56% Model Accuracy: 58.16%
+430 Model Accuracy: 81.52% Model Accuracy: 55.72%
+440 Model Accuracy: 83.08% Model Accuracy: 57.64%
+450 Model Accuracy: 86.92% Model Accuracy: 54.80%
+460 Model Accuracy: 83.64% Model Accuracy: 58.56%
+470 Model Accuracy: 86.32% Model Accuracy: 54.64%
+480 Model Accuracy: 83.84% Model Accuracy: 56.56%
+490 Model Accuracy: 86.36% Model Accuracy: 54.64%
+500 Model Accuracy: 83.56% Model Accuracy: 54.48%
+510 Model Accuracy: 70.36% Model Accuracy: 55.00%
+520 Model Accuracy: 85.16% Model Accuracy: 53.68%
+530 Model Accuracy: 78.76% Model Accuracy: 54.72%
+540 Model Accuracy: 88.24% Model Accuracy: 48.96%
+550 Model Accuracy: 83.08% Model Accuracy: 52.72%
+560 Model Accuracy: 87.56% Model Accuracy: 55.32%
+570 Model Accuracy: 86.00% Model Accuracy: 53.60%
+580 Model Accuracy: 85.24% Model Accuracy: 54.16%
+590 Model Accuracy: 87.44% Model Accuracy: 52.96%
+600 Model Accuracy: 84.20% Model Accuracy: 53.12%
+610 Model Accuracy: 86.60% Model Accuracy: 54.36%
+620 Model Accuracy: 87.68% Model Accuracy: 55.28%
+630 Model Accuracy: 87.32% Model Accuracy: 53.76%
+640 Model Accuracy: 87.72% Model Accuracy: 52.60%
+650 Model Accuracy: 87.88% Model Accuracy: 54.12%
+660 Model Accuracy: 88.64% Model Accuracy: 52.52%
+670 Model Accuracy: 87.80% Model Accuracy: 54.04%
+680 Model Accuracy: 88.72% Model Accuracy: 54.68%
+690 Model Accuracy: 89.64% Model Accuracy: 54.20%
+700 Model Accuracy: 89.12% Model Accuracy: 54.24%
+710 Model Accuracy: 87.92% Model Accuracy: 51.96%
+720 Model Accuracy: 89.28% Model Accuracy: 54.28%
+730 Model Accuracy: 90.84% Model Accuracy: 50.88%
+740 Model Accuracy: 86.68% Model Accuracy: 55.40%
+750 Model Accuracy: 90.52% Model Accuracy: 53.16%
+760 Model Accuracy: 88.76% Model Accuracy: 55.64%
+770 Model Accuracy: 87.96% Model Accuracy: 54.64%
+780 Model Accuracy: 88.52% Model Accuracy: 52.60%
+790 Model Accuracy: 88.44% Model Accuracy: 54.00%
+800 Model Accuracy: 88.00% Model Accuracy: 53.80%
+810 Model Accuracy: 89.12% Model Accuracy: 54.52%
+820 Model Accuracy: 88.20% Model Accuracy: 57.28%
+830 Model Accuracy: 88.72% Model Accuracy: 54.56%
+840 Model Accuracy: 90.48% Model Accuracy: 53.84%
+850 Model Accuracy: 89.96% Model Accuracy: 56.80%
+860 Model Accuracy: 88.44% Model Accuracy: 56.76%
+870 Model Accuracy: 90.60% Model Accuracy: 54.96%
+880 Model Accuracy: 90.28% Model Accuracy: 54.80%
+890 Model Accuracy: 89.92% Model Accuracy: 55.96%
+900 Model Accuracy: 90.60% Model Accuracy: 56.92%
+910 Model Accuracy: 89.24% Model Accuracy: 54.84%
+920 Model Accuracy: 90.96% Model Accuracy: 55.04%
+930 Model Accuracy: 83.56% Model Accuracy: 48.32%
+940 Model Accuracy: 90.56% Model Accuracy: 53.80%
+950 Model Accuracy: 90.44% Model Accuracy: 56.28%
+960 Model Accuracy: 92.20% Model Accuracy: 52.68%
+970 Model Accuracy: 91.08% Model Accuracy: 55.16%
+980 Model Accuracy: 90.40% Model Accuracy: 56.60%
+990 Model Accuracy: 91.88% Model Accuracy: 54.12%
+1000 Model Accuracy: 92.36% Model Accuracy: 53.76%
+1010 Model Accuracy: 90.68% Model Accuracy: 53.00%
+1020 Model Accuracy: 91.56% Model Accuracy: 53.68%
+1030 Model Accuracy: 92.60% Model Accuracy: 57.36%
+1040 Model Accuracy: 91.28% Model Accuracy: 55.44%
+1050 Model Accuracy: 91.92% Model Accuracy: 53.36%
+1060 Model Accuracy: 91.36% Model Accuracy: 53.72%
+1070 Model Accuracy: 91.00% Model Accuracy: 54.00%
+1080 Model Accuracy: 91.36% Model Accuracy: 53.92%
+1090 Model Accuracy: 91.08% Model Accuracy: 52.80%
+1100 Model Accuracy: 91.88% Model Accuracy: 53.16%
+1110 Model Accuracy: 92.28% Model Accuracy: 52.60%
+1120 Model Accuracy: 93.28% Model Accuracy: 55.08%
+1130 Model Accuracy: 92.68% Model Accuracy: 55.56%
+1140 Model Accuracy: 93.68% Model Accuracy: 53.28%
+1150 Model Accuracy: 93.36% Model Accuracy: 54.24%
+1160 Model Accuracy: 93.52% Model Accuracy: 54.36%
+1170 Model Accuracy: 93.56% Model Accuracy: 50.72%
+1180 Model Accuracy: 94.32% Model Accuracy: 52.48%
+1190 Model Accuracy: 94.24% Model Accuracy: 49.60%
+1200 Model Accuracy: 94.36% Model Accuracy: 50.60%
+1210 Model Accuracy: 94.04% Model Accuracy: 51.16%
+1220 Model Accuracy: 94.40% Model Accuracy: 52.56%
+1230 Model Accuracy: 90.84% Model Accuracy: 53.20%
+1240 Model Accuracy: 93.20% Model Accuracy: 50.88%
+1250 Model Accuracy: 94.96% Model Accuracy: 52.72%
+1260 Model Accuracy: 94.40% Model Accuracy: 51.00%
+1270 Model Accuracy: 92.04% Model Accuracy: 52.20%
+1280 Model Accuracy: 95.24% Model Accuracy: 51.52%
+1290 Model Accuracy: 95.12% Model Accuracy: 52.20%
+1300 Model Accuracy: 95.20% Model Accuracy: 51.52%
+1310 Model Accuracy: 94.44% Model Accuracy: 52.24%
+1320 Model Accuracy: 94.76% Model Accuracy: 52.92%
+1330 Model Accuracy: 94.36% Model Accuracy: 51.80%
+1340 Model Accuracy: 95.00% Model Accuracy: 51.52%
+1350 Model Accuracy: 95.60% Model Accuracy: 52.00%
+1360 Model Accuracy: 92.88% Model Accuracy: 52.84%
+1370 Model Accuracy: 94.84% Model Accuracy: 52.20%
+1380 Model Accuracy: 94.28% Model Accuracy: 51.40%
+1390 Model Accuracy: 96.12% Model Accuracy: 51.84%
+1400 Model Accuracy: 95.64% Model Accuracy: 53.04%
+1410 Model Accuracy: 94.52% Model Accuracy: 51.52%
+1420 Model Accuracy: 95.28% Model Accuracy: 51.92%
+1430 Model Accuracy: 95.16% Model Accuracy: 52.16%
+1440 Model Accuracy: 96.08% Model Accuracy: 52.88%
+1450 Model Accuracy: 95.88% Model Accuracy: 51.44%
+1460 Model Accuracy: 95.76% Model Accuracy: 51.16%
+1470 Model Accuracy: 95.12% Model Accuracy: 49.88%
+1480 Model Accuracy: 95.68% Model Accuracy: 52.24%
+1490 Model Accuracy: 96.04% Model Accuracy: 51.60%
