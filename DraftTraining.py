@@ -12,18 +12,22 @@ from ArtificialImprovedDataset import ArtificialImprovedDatasetFactory
 from Message import Message, LABELS
 import BasicArtificialDataset
 
-good_labels = [LABELS['Good'], LABELS['Discussion'], LABELS['Endorsed Automated']]
-
 with open(os.getcwd() + '/messages.pkl', 'rb') as f:
     messages = pickle.load(f)
 
 max_seq_len = 40
 train_messages = 2500
+set_size = 2500
 test_messages = 2500
-epochs = 1500
+epochs = 3000
 nodes = 64
 nodes2 = 32
 nodes3 = 32
+
+# Fix things by:
+# -reduce time until next msg in category is non-repetitive
+# -try w/o the dropout
+# -increase the learning rate?
 
 # Basic artificial dataset
 BasicArtificialDataset.make_fake_messages(train_messages + test_messages)
@@ -44,7 +48,7 @@ artificial_improved = map(lambda (msg, label): make_message_class(msg, label), z
 real_dataset = [msg for msg in messages if msg.label != LABELS['Unknown']][:train_messages + test_messages]
 
 # Reduced dataset
-reduced_real = [msg for msg in real_dataset if msg.label in [LABELS['Repetitive'], LABELS['Discussion']]]
+reduced_real = [msg for msg in real_dataset if msg.label in [LABELS['Repetitive'], LABELS['Discussion'], LABELS['Good'], LABELS['Endorsed Automated']]]
 
 done = False
 while not done:
@@ -58,8 +62,10 @@ while not done:
         messages = basic_artificial
     elif ds_answer == 'i':
         messages = artificial_improved
+        with open(os.getcwd() + '/fake_set.pkl', 'wb') as f:
+			pickle.dump(artificial_improved, f) 
     else:
-        done = False
+        done = False 
 
 for msg in messages:
     msg.make_ascii()
@@ -100,7 +106,9 @@ def begin_training():
 
 
 def run_epoch(model, Xe, ye, i, eval, save):
-    model.fit(Xe, ye, nb_epoch=1, batch_size=1, verbose=1, shuffle=False)
+    set_sized_batches = len(Xe) / set_size
+    start = set_size * (i % set_sized_batches)
+    model.fit(Xe[start:start+set_size], ye[start:start+set_size], nb_epoch=1, batch_size=1, verbose=1, shuffle=False)
     model.reset_states()
     print 'EPOCH {0}'.format(i)
     if eval:
@@ -157,7 +165,4 @@ if action == 'c':
 
 evaluate(model, X_tr, y_tr, True)
 evaluate(model, X_te, y_te, False)
-
-with open(os.getcwd() + '/fake_set.pkl', 'wb') as f:
-    pickle.dump(artificial_improved, f) 
 
