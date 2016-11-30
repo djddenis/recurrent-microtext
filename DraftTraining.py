@@ -10,6 +10,7 @@ import pickle
 import os
 from ArtificialImprovedDataset import ArtificialImprovedDatasetFactory
 from Message import Message, LABELS
+from OneHot import get_one_hot
 import BasicArtificialDataset
 
 good_labels = [LABELS['Good'], LABELS['Discussion'], LABELS['Endorsed Automated']]
@@ -64,6 +65,8 @@ while not done:
 for msg in messages:
     msg.make_ascii()
     msg.ignore_caps()
+
+X = get_one_hot(messages)
 
 X = [([ord(c) for c in msg.message] + [-1.]) for msg in messages]
 X = pad_sequences(X, maxlen=max_seq_len, dtype='float32')
@@ -159,5 +162,5 @@ evaluate(model, X_tr, y_tr, True)
 evaluate(model, X_te, y_te, False)
 
 with open(os.getcwd() + '/fake_set.pkl', 'wb') as f:
-    pickle.dump(artificial_improved, f) 
+    pickle.dump(artificial_improved, f)
 
