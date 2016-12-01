@@ -16,8 +16,9 @@ with open(os.getcwd() + '/messages.pkl', 'rb') as f:
     messages = pickle.load(f)
 
 max_seq_len = 40
-train_messages = 2500
-set_size = 2500
+train_messages = 10000
+set_size = 1000
+repeat_set_epochs = 25
 test_messages = 2500
 epochs = 3000
 nodes = 64
@@ -40,6 +41,7 @@ def make_message_class(text, good):
     msg.label = LABELS['Discussion'] if good else LABELS['Repetitive']
     return msg
 
+ArtificialImprovedDatasetFactory.REPETITIVE_RESET_RATE = 10
 ArtificialImprovedDatasetFactory.NUM_MESSAGES = train_messages + test_messages
 ads_factory = ArtificialImprovedDatasetFactory()
 artificial_improved = map(lambda (msg, label): make_message_class(msg, label), zip(ads_factory.messages, ads_factory.labels))
@@ -70,6 +72,7 @@ while not done:
 for msg in messages:
     msg.make_ascii()
     msg.ignore_caps()
+    
 
 X = [([ord(c) for c in msg.message] + [-1.]) for msg in messages]
 X = pad_sequences(X, maxlen=max_seq_len, dtype='float32')
@@ -107,7 +110,8 @@ def begin_training():
 
 def run_epoch(model, Xe, ye, i, eval, save):
     set_sized_batches = len(Xe) / set_size
-    start = set_size * (i % set_sized_batches)
+    start = set_size * (int(i / repeat_set_epochs) % set_sized_batches)
+    print start
     model.fit(Xe[start:start+set_size], ye[start:start+set_size], nb_epoch=1, batch_size=1, verbose=1, shuffle=False)
     model.reset_states()
     print 'EPOCH {0}'.format(i)
