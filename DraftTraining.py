@@ -10,6 +10,7 @@ import pickle
 import os
 from ArtificialImprovedDataset import ArtificialImprovedDatasetFactory
 from Message import Message, LABELS
+from OneHot import get_one_hot
 import BasicArtificialDataset
 
 with open(os.getcwd() + '/messages.pkl', 'rb') as f:
@@ -73,6 +74,8 @@ for msg in messages:
     msg.make_ascii()
     msg.ignore_caps()
     
+
+X = get_one_hot(messages)
 
 X = [([ord(c) for c in msg.message] + [-1.]) for msg in messages]
 X = pad_sequences(X, maxlen=max_seq_len, dtype='float32')
