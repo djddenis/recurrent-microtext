@@ -66,27 +66,24 @@ while not done:
     elif ds_answer == 'i':
         messages = artificial_improved
         with open(os.getcwd() + '/fake_set.pkl', 'wb') as f:
-			pickle.dump(artificial_improved, f) 
+            pickle.dump(artificial_improved, f)
     else:
         done = False 
 
 for msg in messages:
     msg.make_ascii()
     msg.ignore_caps()
-    
+    msg.fix_length(max_seq_len)
 
 X = get_one_hot(messages)
-
-X = [([ord(c) for c in msg.message] + [-1.]) for msg in messages]
-X = pad_sequences(X, maxlen=max_seq_len, dtype='float32')
-X = np.reshape(X, (X.shape[0], max_seq_len, 1))
-X /= np.linalg.norm(X)
+X = np.reshape(X, (X.shape[0], 1, max_seq_len + 1))  # (num_samples, timesteps, input dim (added one for end of message char)
 y = np.array([(int(msg.label != LABELS['Repetitive'])) for msg in messages])
 
 X_tr = X[:train_messages]
 y_tr = y[:train_messages]
 X_te = X[train_messages:train_messages + test_messages]
 y_te = y[train_messages:train_messages + test_messages]
+
 
 def begin_training():
     model = Sequential()

@@ -36,3 +36,9 @@ class Message:
 
     def ignore_caps(self):
         self.message = self.message.lower()
+
+    def fix_length(self, length):
+        if len(self.message) >= length:
+            return self.message[0:length]
+        else:
+            return self.message + "".join([chr(0)] * length)
