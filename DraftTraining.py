@@ -70,6 +70,8 @@ while not done:
             pickle.dump(artificial_improved, f)
     else:
         done = False 
+        
+action = raw_input('Mode? (b)egin training, (c)ontinue training, or evaluate only').lower()  # used later
 
 for msg in messages:
     msg.make_ascii()
@@ -157,8 +159,7 @@ def evaluate(model, X_eval, y_eval, training):
     score_string = "Model Accuracy: %.2f%%" % (scores[1]*100)
     print(score_string)
     return score_string
-
-action = raw_input('Mode? (b)egin training, (c)ontinue training, or evaluate only').lower()
+    
 model = None
 if action == 'b':
     model = begin_training()
