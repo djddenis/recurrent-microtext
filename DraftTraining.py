@@ -61,6 +61,7 @@ while not done:
         messages = real_dataset
     elif ds_answer == 'd':
         messages = reduced_real
+        test_messages = min(test_messages, len(messages) - train_messages)
     elif ds_answer == 'b':
         messages = basic_artificial
     elif ds_answer == 'i':
