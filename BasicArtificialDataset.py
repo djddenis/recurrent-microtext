@@ -12,7 +12,7 @@ def make_fake_messages(num):
     def make_message(text, good):
         global fake_messages
         msg = Message(":0:abc:{0}".format(text))
-        msg.label = LABELS['Good'] if good else LABELS['Bad']
+        msg.label = LABELS['Discussion'] if good else LABELS['Repetitive']
         fake_messages += [msg]
 
     def gen_random_text():

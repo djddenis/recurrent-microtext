@@ -41,4 +41,4 @@ class Message:
         if len(self.message) >= length:
             return self.message[0:length]
         else:
-            return self.message + "".join([chr(0)] * length - len(self.message))
+            return self.message + "".join([chr(0)] * (length - len(self.message)))

@@ -18,13 +18,13 @@ with open(os.getcwd() + '/messages.pkl', 'rb') as f:
 
 max_seq_len = 40
 train_messages = 10000
-set_size = 1000
-repeat_set_epochs = 25
-test_messages = 2500
-epochs = 3000
-nodes = 64
-nodes2 = 32
-nodes3 = 32
+set_size = 2500
+repeat_set_epochs = 1000
+test_messages = 3000
+epochs = 20000
+nodes = 500
+nodes2 = 40
+nodes3 = 40
 
 # Fix things by:
 # -reduce time until next msg in category is non-repetitive
@@ -79,7 +79,8 @@ for msg in messages:
     msg.fix_length(max_seq_len)
 
 X = get_one_hot(messages)
-X = np.reshape(X, (X.shape[0], 1, max_seq_len + 1))  # (num_samples, timesteps, input dim (added one for end of message char)
+
+X = np.reshape(X, (X.shape[0], 1, X.shape[1]))  # (num_samples, timesteps, input dim)
 y = np.array([(int(msg.label != LABELS['Repetitive'])) for msg in messages])
 
 X_tr = X[:train_messages]
@@ -91,11 +92,8 @@ y_te = y[train_messages:train_messages + test_messages]
 def begin_training():
     model = Sequential()
     model.add(GRU(nodes, batch_input_shape=(1, X_tr.shape[1], X_tr.shape[2]), stateful=True, return_sequences=True))
-    model.add(Dropout(0.2))
     model.add(GRU(nodes2, return_sequences=True, stateful=True))
-    model.add(Dropout(0.1))
     model.add(GRU(nodes3, stateful=True))
-    model.add(Dropout(0.1))
     model.add(Dense(1, activation='sigmoid'))
 
     # usually lr=0.0001
