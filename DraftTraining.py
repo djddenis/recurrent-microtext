@@ -10,7 +10,7 @@ import pickle
 import os
 from ArtificialImprovedDataset import ArtificialImprovedDatasetFactory
 from Message import Message, LABELS
-from OneHot import get_one_hot
+from Encodings import get_one_hot, get_c2v_encoded
 import BasicArtificialDataset
 
 with open(os.getcwd() + '/messages.pkl', 'rb') as f:
@@ -78,7 +78,7 @@ for msg in messages:
     msg.ignore_caps()
     msg.fix_length(max_seq_len)
 
-X = get_one_hot(messages)
+X = get_c2v_encoded(messages)
 
 X = np.reshape(X, (X.shape[0], 1, X.shape[1]))  # (num_samples, timesteps, input dim)
 y = np.array([(int(msg.label != LABELS['Repetitive'])) for msg in messages])
