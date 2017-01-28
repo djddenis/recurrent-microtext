@@ -43,7 +43,7 @@ def get_c2v_encoded(messages):
 def load_c2v_encoding():
     encoding = dict()
     with open(os.getcwd() + '/c2v_vec.txt', 'r+') as f:
-        for line in f.readlines():
+        for line in f.readlines()[1:]:
             pieces = line.split(' ')
             char = pieces[0]
             vec = [float(i) for i in pieces[1: C2V_ENCODING_SIZE + 1]]
@@ -52,4 +52,6 @@ def load_c2v_encoding():
             if char == 'S':
                 char = ' '
             encoding[char] = vec
+    encoding[chr(0)] = np.zeros(C2V_ENCODING_SIZE)
+    # encoding['|'] = np.zeros(C2V_ENCODING_SIZE)
     return encoding

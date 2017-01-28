@@ -39,6 +39,6 @@ class Message:
 
     def fix_length(self, length):
         if len(self.message) >= length:
-            return self.message[0:length]
+            self.message = self.message[0:length]
         else:
-            return self.message + "".join([chr(0)] * (length - len(self.message)))
+            self.message += "".join([chr(0)] * (length - len(self.message)))
