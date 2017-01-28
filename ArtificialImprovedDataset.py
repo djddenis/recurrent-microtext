@@ -33,8 +33,11 @@ class RepetitivePhrase:
                 new_char = char
                 break
 
+        if len(starter) == 0:
+            return ''
+
         existing_char = ' '
-        while existing_char == ' ' and len(starter) > 0:
+        while existing_char == ' ':
             swap_pos = random.randint(0, len(starter) - 1)
             existing_char = starter[swap_pos]
         starter = list(starter)
@@ -136,7 +139,7 @@ class ArtificialImprovedDatasetFactory:
             message += ArtificialImprovedDatasetFactory.get_word(repetitive) + ' '
         return message[:-1]
 
-ArtificialImprovedDatasetFactory.NUM_MESSAGES = 350
-ads = ArtificialImprovedDatasetFactory()
-for msg in ads.messages:
-    print msg
+# ArtificialImprovedDatasetFactory.NUM_MESSAGES = 350
+# ads = ArtificialImprovedDatasetFactory()
+# for msg in ads.messages:
+#     print msg
