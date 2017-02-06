@@ -17,14 +17,14 @@ with open(os.getcwd() + '/messages.pkl', 'rb') as f:
     messages = pickle.load(f)
 
 max_seq_len = 40
-train_messages = 10000
-set_size = 2500
-repeat_set_epochs = 1000
-test_messages = 3000
-epochs = 20000
+train_messages = 3000
+set_size = 3000
+repeat_set_epochs = 1
+test_messages = 2000 	
+epochs = 10000
 nodes = 500
-nodes2 = 40
-nodes3 = 40
+nodes2 = 64
+nodes3 = 64
 
 # Fix things by:
 # -reduce time until next msg in category is non-repetitive
@@ -46,7 +46,7 @@ ArtificialImprovedDatasetFactory.REPETITIVE_RESET_RATE = 10
 ArtificialImprovedDatasetFactory.NUM_MESSAGES = train_messages + test_messages
 ads_factory = ArtificialImprovedDatasetFactory()
 artificial_improved = map(lambda (msg, label): make_message_class(msg, label), zip(ads_factory.messages, ads_factory.labels))
-
+	
 # Real datset
 real_dataset = [msg for msg in messages if msg.label != LABELS['Unknown']][:train_messages + test_messages]
 
@@ -78,7 +78,7 @@ for msg in messages:
     msg.ignore_caps()
     msg.fix_length(max_seq_len)
 
-X = get_c2v_encoded(messages)
+X = get_one_hot(messages)
 
 X = np.reshape(X, (X.shape[0], 1, X.shape[1]))  # (num_samples, timesteps, input dim)
 y = np.array([(int(msg.label != LABELS['Repetitive'])) for msg in messages])
