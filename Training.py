@@ -26,10 +26,9 @@ nodes = 500
 nodes2 = 64
 nodes3 = 64
 
-# Fix things by:
-# -reduce time until next msg in category is non-repetitive
-# -try w/o the dropout
-# -increase the learning rate?
+# For dealing with class imbalance:
+# -oversampling
+# -change of objective
 
 # Basic artificial dataset
 BasicArtificialDataset.make_fake_messages(train_messages + test_messages)
